@@ -19,6 +19,8 @@ import ListIcon from '@mui/icons-material/List';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -87,29 +89,41 @@ const NavBar = () => {
               onKeyDown={()=>setIsDrawerOpen(false)}
               >
               <List>
-                {['All', 'Starred'].map((text, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton>
+                <ListItem disablePadding>
+                  <ListItemButton component={ Link } to='/lists'>
                     <ListItemIcon>
-                      {index % 2 === 0 ? <ListIcon /> : <StarBorderIcon />}
+                      <ListIcon />
                     </ListItemIcon>
-                    <ListItemText primary={text} />
+                    <ListItemText>All</ListItemText>
                   </ListItemButton>
                 </ListItem>
-                ))}
+                <ListItem disablePadding>
+                  <ListItemButton component={ Link } to='/saved'>
+                    <ListItemIcon>
+                      <StarBorderIcon />
+                    </ListItemIcon>
+                    <ListItemText>Starred</ListItemText>
+                  </ListItemButton>
+                </ListItem>
               </List>
               <Divider />
               <List>
-                {['New', 'Deleted'].map((text, index) => (
-                  <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                      <ListItemIcon>
-                        {index % 2 === 0 ? <PlaylistAddIcon /> : <DeleteIcon />}
-                      </ListItemIcon>
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <PlaylistAddIcon />
+                    </ListItemIcon>
+                    <ListItemText>New</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DeleteIcon />
+                    </ListItemIcon>
+                    <ListItemText>Deleted</ListItemText>
+                  </ListItemButton>
+                </ListItem>
               </List>
             </Box>
           </Drawer>
@@ -119,7 +133,7 @@ const NavBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
-            PHASE 3 PROJECT
+            <Button color='inherit' component={ Link } to='/'>PHASE 3 PROJECT</Button>
           </Typography>
           <Search>
             <SearchIconWrapper>
