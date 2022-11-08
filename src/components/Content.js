@@ -24,7 +24,7 @@ const Content = ({ lists }) => {
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route path='/lists' element={<All lists={lists} />} />
-                            <Route path='/saved' element={<Starred />} />
+                            <Route path='/saved' element={<Starred lists={lists} />} />
                         </Routes>
                     </Grid>
                 </Grid>

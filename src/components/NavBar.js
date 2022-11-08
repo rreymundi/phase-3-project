@@ -17,8 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListIcon from '@mui/icons-material/List';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import CheckIcon from '@mui/icons-material/Check';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+import LoginIcon from '@mui/icons-material/Login';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -64,8 +63,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const NavBar = () => {
+const NavBar = ({ search, setSearch }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+
+  const handleNewClick = () => {
+
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -109,17 +112,17 @@ const NavBar = () => {
               <Divider />
               <List>
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  {/* <ListItemButton component={ Link } to='/lists/new' onClick={handleNewClick}>
                     <ListItemIcon>
                       <PlaylistAddIcon />
                     </ListItemIcon>
                     <ListItemText>New</ListItemText>
-                  </ListItemButton>
+                  </ListItemButton> */}
                 </ListItem>
                 <ListItem disablePadding>
                   <ListItemButton sx={{ bottom: 0 }}>
                     <ListItemIcon>
-                      <CheckIcon />
+                      <LoginIcon />
                     </ListItemIcon>
                     <ListItemText>Log in</ListItemText>
                   </ListItemButton>
@@ -142,6 +145,7 @@ const NavBar = () => {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </Search>
         </Toolbar>

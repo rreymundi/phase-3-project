@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -11,19 +10,12 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Typography from '@mui/material/Typography';
 import { Card } from '@mui/material';
+import { Task } from '@mui/icons-material';
 
 const CheckboxList = ({ list }) => {
   const [checked, setChecked] = useState(false);
   const [saved, setSaved] = useState(false)
   const tasks = list.tasks
-
-  const handleToggleCheck = () => {
-    setChecked(!checked);
-  };
-
-  const handleToggleSave = () => {
-    setSaved(!saved)
-  }
 
   return (
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
@@ -43,11 +35,22 @@ const CheckboxList = ({ list }) => {
         tasks.map((task) => {
           const labelId = `checkbox-list-label-${task.name}`;
 
+          const handleToggleCheck = () => {
+            task.status = !task.status
+            setChecked((checked) => !checked)
+          }
+
+          const handleSaveClick = () => {
+            task.saved = !task.saved
+            setSaved((saved) => !saved)
+            console.log(task)
+          }
+
           return (
             <Container key={task.id}>
               <ListItem
               secondaryAction={
-                <IconButton edge="end" aria-label="comments" onClick={handleToggleSave} >
+                <IconButton edge="end" aria-label="bookmark" onClick={handleSaveClick} >
                   {saved ? <BookmarkIcon /> : <BookmarkBorderIcon /> }
                 </IconButton>
               }
