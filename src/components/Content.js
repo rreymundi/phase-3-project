@@ -1,13 +1,11 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Home';
 import All from './All';
 import Starred from './Starred';
-
-// const drawerWidth = 240
 
 const Content = ({ lists }) => {
   return (
@@ -15,8 +13,6 @@ const Content = ({ lists }) => {
             component='main'
             sx={{
                 height: '100vh',
-                // width: { xs: '100%', sm: `calc(100% - ${drawerWidth}px)` },
-                // ml: { sm: `${drawerWidth}px` },
                 overflow: 'auto',
                 display: 'flex',
                 flexFlow: 'row nowrap',

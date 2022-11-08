@@ -117,11 +117,11 @@ const NavBar = () => {
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton>
+                  <ListItemButton sx={{ bottom: 0 }}>
                     <ListItemIcon>
                       <CheckIcon />
                     </ListItemIcon>
-                    <ListItemText>Completed</ListItemText>
+                    <ListItemText>Log in</ListItemText>
                   </ListItemButton>
                 </ListItem>
               </List>
