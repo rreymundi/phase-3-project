@@ -16,8 +16,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListIcon from '@mui/icons-material/List';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import DeleteIcon from '@mui/icons-material/Delete';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import CheckIcon from '@mui/icons-material/Check';
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -100,9 +100,9 @@ const NavBar = () => {
                 <ListItem disablePadding>
                   <ListItemButton component={ Link } to='/saved'>
                     <ListItemIcon>
-                      <StarBorderIcon />
+                      <BookmarkBorderIcon />
                     </ListItemIcon>
-                    <ListItemText>Starred</ListItemText>
+                    <ListItemText>Saved</ListItemText>
                   </ListItemButton>
                 </ListItem>
               </List>
@@ -119,9 +119,9 @@ const NavBar = () => {
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
-                      <DeleteIcon />
+                      <CheckIcon />
                     </ListItemIcon>
-                    <ListItemText>Deleted</ListItemText>
+                    <ListItemText>Completed</ListItemText>
                   </ListItemButton>
                 </ListItem>
               </List>
@@ -133,7 +133,7 @@ const NavBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
-            <Button color='inherit' component={ Link } to='/'>PHASE 3 PROJECT</Button>
+            <Button color='inherit' component={ Link } to='/'>LIST.IT</Button>
           </Typography>
           <Search>
             <SearchIconWrapper>
