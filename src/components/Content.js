@@ -5,9 +5,12 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Home from './Home';
 import All from './All';
-import Starred from './Starred';
+import Saved from './Saved';
 
 const Content = ({ lists }) => {
+
+
+    
   return (
         <Box
             component='main'
@@ -24,7 +27,7 @@ const Content = ({ lists }) => {
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route path='/lists' element={<All lists={lists} />} />
-                            <Route path='/saved' element={<Starred lists={lists} />} />
+                            <Route path='/saved' element={<Saved lists={lists} />} />
                         </Routes>
                     </Grid>
                 </Grid>

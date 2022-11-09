@@ -6,7 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Padding } from '@mui/icons-material';
 import ListModal from './ListModal';
 
-const All = ({ lists, search }) => {
+const Saved = ({ lists, search }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -16,7 +16,7 @@ const All = ({ lists, search }) => {
   return (
     <>
     <Container sx={{ marginBottom: '32px'}}>
-      <Typography variant='h3'>My Lists</Typography>  
+      <Typography variant='h3'>Saved Tasks</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
       {renderedLists}
@@ -29,4 +29,4 @@ const All = ({ lists, search }) => {
   )
 }
 
-export default All
+export default Saved
