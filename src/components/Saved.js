@@ -3,7 +3,6 @@ import { Container, Typography } from '@mui/material'
 import CheckboxList from './CheckboxList'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { Padding } from '@mui/icons-material';
 import ListModal from './ListModal';
 
 const Saved = ({ lists, search }) => {

@@ -11,12 +11,10 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import Typography from '@mui/material/Typography';
 import { Card } from '@mui/material';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
 import TaskModal from './TaskModal';
-import Task from './Task';
+// import Task from './Task';
 
-const CheckboxList = ({ list }) => {
+const CheckboxList = ({ list, onAddTask }) => {
   const [saved, setSaved] = useState(false)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -31,7 +29,7 @@ const CheckboxList = ({ list }) => {
               {list.name}
             </Typography>
             <Button onClick={handleOpen}>Add</Button>
-            {open ? <TaskModal open={open} setOpen={setOpen} handleClose={handleClose}/> : null}
+            {open ? <TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} /> : null}
         </Container>
 
       {tasks.length === 0 ? 

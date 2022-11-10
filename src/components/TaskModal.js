@@ -5,8 +5,8 @@ import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
-const TaskModal = ({ open, setOpen, handleClose}) => {
-
+const TaskModal = ({ list, open, setOpen, handleClose, onAddTask}) => {
+// console.log(list.id)
     const style = {
       position: 'absolute',
       top: '50%',
@@ -23,6 +23,7 @@ const TaskModal = ({ open, setOpen, handleClose}) => {
     const [formData, setFormData] = useState({
       name: "",
       description: "",
+      list_id: list.id,
     })
     
     const handleChange = (e) => {
@@ -33,10 +34,12 @@ const TaskModal = ({ open, setOpen, handleClose}) => {
     }
   
     const handleSubmit = (e) => {
+      setOpen(false);
       e.preventDefault();
       const newTask = {
         name: formData.name,
         description: formData.description,
+        list_id: formData.list_id,
         saved: false,
         status: false
         }
@@ -48,7 +51,7 @@ const TaskModal = ({ open, setOpen, handleClose}) => {
         body: JSON.stringify(newTask)
       })
       .then((r) => r.json())
-      // .then(onAddBook)
+      .then(onAddTask)
     }
 
   return (

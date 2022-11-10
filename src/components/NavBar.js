@@ -66,10 +66,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = ({ search, setSearch }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
-  const handleNewClick = () => {
-
-  }
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -112,12 +108,6 @@ const NavBar = ({ search, setSearch }) => {
               <Divider />
               <List>
                 <ListItem disablePadding>
-                  {/* <ListItemButton component={ Link } to='/lists/new' onClick={handleNewClick}>
-                    <ListItemIcon>
-                      <PlaylistAddIcon />
-                    </ListItemIcon>
-                    <ListItemText>New</ListItemText>
-                  </ListItemButton> */}
                 </ListItem>
                 <ListItem disablePadding>
                   <ListItemButton sx={{ bottom: 0 }}>
