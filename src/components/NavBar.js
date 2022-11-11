@@ -20,6 +20,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import LoginIcon from '@mui/icons-material/Login';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import LoginModal from './LoginModal';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -66,6 +67,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = ({ search, setSearch }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -110,7 +115,7 @@ const NavBar = ({ search, setSearch }) => {
                 <ListItem disablePadding>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton sx={{ bottom: 0 }}>
+                  <ListItemButton sx={{ bottom: 0 }} onClick={handleOpen}>
                     <ListItemIcon>
                       <LoginIcon />
                     </ListItemIcon>
@@ -120,6 +125,7 @@ const NavBar = ({ search, setSearch }) => {
               </List>
             </Box>
           </Drawer>
+                <LoginModal open={open} setOpen={setOpen} handleClose={handleClose} />
           <Typography
             variant="h6"
             noWrap

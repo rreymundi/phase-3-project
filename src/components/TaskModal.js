@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
 const TaskModal = ({ list, open, setOpen, handleClose, onAddTask}) => {
-// console.log(list.id)
-    const style = {
+
+  const style = {
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -23,7 +23,7 @@ const TaskModal = ({ list, open, setOpen, handleClose, onAddTask}) => {
     const [formData, setFormData] = useState({
       name: "",
       description: "",
-      list_id: list.id,
+      list_id: list.id
     })
     
     const handleChange = (e) => {
@@ -64,7 +64,7 @@ const TaskModal = ({ list, open, setOpen, handleClose, onAddTask}) => {
             <Box sx={style} component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
                 <Grid item>
-                  <Typography sx={{}}>Add a new task</Typography>
+                  <Typography>Add a new task</Typography>
                 </Grid>
                 <Grid item>
                   <TextField required={ true } id="name" name="name" variant="standard" placeholder="Task name" value={formData.name} onChange={handleChange}/>

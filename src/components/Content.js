@@ -7,7 +7,7 @@ import Home from './Home';
 import All from './All';
 import Saved from './Saved';
 
-const Content = ({ lists, search, onAddTask }) => {
+const Content = ({ lists, search, onAddTask, onAddList }) => {
 
   return (
         <Box
@@ -24,7 +24,7 @@ const Content = ({ lists, search, onAddTask }) => {
                     <Grid item xs={12}>
                         <Routes>
                             <Route path='/' element={<Home />} />
-                            <Route path='/lists' element={<All lists={lists} search={search} onAddTask={onAddTask} />} />
+                            <Route path='/lists' element={<All lists={lists} search={search} onAddTask={onAddTask} onAddList={onAddList} />} />
                             <Route path='/saved' element={<Saved lists={lists} search={search} />} />
                         </Routes>
                     </Grid>

@@ -3,11 +3,9 @@ import NavBar from "./components/NavBar";
 import Content from "./components/Content";
 import { BrowserRouter as Router } from "react-router-dom";
 
-
 function App() {
   const [lists, setLists] = useState([])
-  const [tasks, setTasks] = useState([])
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
@@ -15,14 +13,20 @@ function App() {
     .then((data) => setLists(data));
   }, []);
   
-  const handleTaskAdd = (newTask) => {
-    setLists([...lists, newTask])
+  const handleListAdd = (newList) => {
+    setLists([...lists, newList])
   }
+
+  const [tasks, setTasks] = useState([])
+  const handleTaskAdd = (newTask) => {
+    setTasks([...tasks, newTask])
+  }
+
 
   return (
       <Router>
         <NavBar search={search} setSearch={setSearch} />
-        <Content lists={lists} search={search} onAddTask={handleTaskAdd}/>
+        <Content lists={lists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} />
       </Router>
   );
 }

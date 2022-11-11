@@ -5,7 +5,7 @@ import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
-const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
+const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
 
     const style = {
       position: 'absolute',
@@ -22,6 +22,7 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
     
     const [formData, setFormData] = useState({
       name: "",
+      password: ""
     })
     
     const handleChange = (e) => {
@@ -29,23 +30,28 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
         ...formData,
         [e.target.name]: e.target.value,
       })
+      console.log(formData)
     }
   
-    const handleSubmit = (e) => {
-      setOpen(false);
-      e.preventDefault();
-      const newList = {
-        name: formData.name,
-        }
-      fetch("http://localhost:9292/lists", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify(newList)
-      })
-      .then((r) => r.json())
-      .then(onAddList)
+    // const handleSubmit = (e) => {
+    //  setOpen(false);
+    //   e.preventDefault();
+    //   const newList = {
+    //     name: formData.name,
+    //     }
+    //   fetch("http://localhost:9292/lists", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-type": "application/json"
+    //     },
+    //     body: JSON.stringify(newList)
+    //   })
+    //   .then((r) => r.json())
+    //   .then(onAddList)
+    // }
+
+    const handleSubmit = () => {
+        console.log('logged in!')
     }
 
   return (
@@ -58,10 +64,13 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
             <Box sx={style} component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
                 <Grid item>
-                  <Typography>Add a new list</Typography>
+                  <Typography >Log in</Typography>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="List name" value={formData.name} onChange={handleChange}/>
+                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="username" value={formData.name} onChange={handleChange}/>
+                </Grid>
+                <Grid item>
+                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="password" value={formData.password} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
                     <Button color="primary" type="submit">Submit</Button>
@@ -72,4 +81,4 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
   )
 }
 
-export default ListModal
+export default LoginModal
