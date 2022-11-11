@@ -5,7 +5,7 @@ import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
-const TaskModal = ({ list, open, setOpen, handleClose, onAddTask}) => {
+const TaskModal = ({ list, open, setOpen, handleClose, onAddTask }) => {
 
   const style = {
       position: 'absolute',

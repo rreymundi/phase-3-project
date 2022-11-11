@@ -10,9 +10,9 @@ const All = ({ lists, search, onAddTask, onAddList }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
-  // const filteredTasks = tasks.filter((task) => task.name.toLowerCase().includes(search.toLowerCase()))
+  // const filteredTasks = tasks?.filter((task) => task.name.toLowerCase().includes(search.toLowerCase()))
 
-  const unfilteredLists = lists.map((list) => <CheckboxList key={list.id} list={list} onAddTask={onAddTask}/>)
+  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} list={list} onAddTask={onAddTask}/>)
   
   return (
     <>

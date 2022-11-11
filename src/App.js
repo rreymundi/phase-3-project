@@ -12,16 +12,19 @@ function App() {
     .then((r) => r.json())
     .then((data) => setLists(data));
   }, []);
-  
+
   const handleListAdd = (newList) => {
     setLists([...lists, newList])
   }
 
-  const [tasks, setTasks] = useState([])
   const handleTaskAdd = (newTask) => {
-    setTasks([...tasks, newTask])
+    lists.forEach((list) => {
+      if (list.id === newTask.list_id) {
+        list.tasks?.push(newTask)
+      }
+    })
+    setLists([...lists])
   }
-
 
   return (
       <Router>

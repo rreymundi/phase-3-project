@@ -15,6 +15,7 @@ const Task = ({ task, saved, setSaved }) => {
 
     const handleToggleCheck = () => {
       task.status = !task.status
+      console.log(task)
     }
     
     const handleSaveClick = () => {
@@ -23,20 +24,20 @@ const Task = ({ task, saved, setSaved }) => {
       console.log(task)
     }
 
-    // const handleTaskUpdate = () => {
-    //   fetch(`http://localhost:9292/tasks/${task.id}`, {
-    //     method: "PATCH",
-    //     headers: {
-    //       "Content-type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       saved: true/false,
-    //       status: true/false
-    //     }),
-    //   })
-    //   .then((r) => r.json())
-    //   .then()
-    // }
+    const handleTaskUpdate = () => {
+      fetch(`http://localhost:9292/tasks/${task.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          saved: true/false,
+          status: true/false
+        }),
+      })
+      .then((r) => r.json())
+      .then()
+    }
 
     return (
       <Container key={task.id}>
