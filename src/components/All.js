@@ -5,14 +5,14 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 
-const All = ({ lists, search, onAddTask, onAddList }) => {
+const All = ({ lists, search, onAddTask, onAddList, onCheckTask, onSaveTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
   // const filteredTasks = tasks?.filter((task) => task.name.toLowerCase().includes(search.toLowerCase()))
 
-  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} list={list} onAddTask={onAddTask}/>)
+  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} list={list} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask}/>)
   
   return (
     <>

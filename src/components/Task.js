@@ -9,41 +9,60 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
 
-const Task = ({ task, saved, setSaved }) => {
+const Task = ({ task, onCheckTask }) => {
+  const [saved, setSaved] = useState(false)
 
     const labelId = `checkbox-list-label-${task.name}`;
 
     const handleToggleCheck = () => {
       task.status = !task.status
-      console.log(task)
-    }
-    
-    const handleSaveClick = () => {
-      setSaved((saved) => !saved)
-      task.saved = !task.saved
-      console.log(task)
+      onCheckTask(task)
     }
 
-    const handleTaskUpdate = () => {
+    // you left off here!
+ 
+    const handleTaskSave = () => {
+      if (task.saved === false) {
+        fetch(`http://localhost:9292/tasks/${task.id}`, {
+          method: 'PATCH',
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify({
+            saved: true
+          }),
+        })
+        .then((r) => r.json())
+        .then(setSaved(true))
+      }
+      else {
+        fetch(`http://localhost:9292/tasks/${task.id}`, {
+          method: 'PATCH',
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify({
+            saved: false
+          }),
+        })
+        .then((r) => r.json())
+        .then(setSaved(false))
+      }
+      }
+    
+
+    const handleTaskDelete = () => {
       fetch(`http://localhost:9292/tasks/${task.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          saved: true/false,
-          status: true/false
-        }),
+        method: 'DELETE'
       })
-      .then((r) => r.json())
-      .then()
+      handleToggleCheck(task.id)
     }
 
     return (
       <Container key={task.id}>
         <ListItem
         secondaryAction={
-          <IconButton edge="end" aria-label="bookmark" onClick={handleSaveClick} >
+          <IconButton edge="end" aria-label="bookmark" onClick={handleTaskSave} >
             {task.saved ? <BookmarkIcon /> : <BookmarkBorderIcon /> }
           </IconButton>
         }
@@ -57,7 +76,7 @@ const Task = ({ task, saved, setSaved }) => {
               tabIndex={-1}
               disableRipple
               inputProps={{ 'aria-labelledby': labelId }}
-              onChange={handleToggleCheck}
+              onChange={handleTaskDelete}
             />
           </ListItemIcon>
           <ListItemText id={labelId} primary={`${task.name}`} />

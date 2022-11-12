@@ -6,8 +6,7 @@ import Button from '@mui/material/Button';
 import TaskModal from './TaskModal';
 import Task from './Task';
 
-const CheckboxList = ({ list, onAddTask }) => {
-  const [saved, setSaved] = useState(false)
+const CheckboxList = ({ list, onAddTask, onCheckTask, onSaveTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -21,7 +20,7 @@ const CheckboxList = ({ list, onAddTask }) => {
             <Button onClick={handleOpen}>Add</Button>
             <TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />
         </Container>
-        {list.tasks?.map((task) => <Task key={task.id} task={task} saved={saved} setSaved={setSaved} />)}
+        {list.tasks?.map((task) => <Task key={task.id} task={task} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)}
       </Card>
     );
 }

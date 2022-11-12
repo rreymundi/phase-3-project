@@ -4,8 +4,8 @@ import Content from "./components/Content";
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-  const [lists, setLists] = useState([])
   const [search, setSearch] = useState("")
+  const [lists, setLists] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
@@ -29,7 +29,7 @@ function App() {
   return (
       <Router>
         <NavBar search={search} setSearch={setSearch} />
-        <Content lists={lists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} />
+        <Content lists={lists} setLists={setLists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} />
       </Router>
   );
 }

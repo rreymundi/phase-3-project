@@ -5,27 +5,30 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 
-const Saved = ({ lists, search }) => {
-  const [open, setOpen] = React.useState(false);
+const Saved = ({ lists, search, onAddTask, onAddList, onCheckTask, onSaveTask }) => {
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
-  const renderedLists = lists.map((list) => <CheckboxList key={list.id} list={list} />)
+  // const filteredTasks = tasks?.filter((task) => task.name.toLowerCase().includes(search.toLowerCase()))
+
+  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} list={list} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask}/>)
   
   return (
     <>
     <Container sx={{ marginBottom: '32px'}}>
-      <Typography variant='h3'>Saved Tasks</Typography>  
+      <Typography variant='h3'>Saved tasks</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
-      {renderedLists}
+      {/* {search === "" ? unfilteredLists : filteredTasks} */}
+      {unfilteredLists}
     </Container>
     <Button variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
       <AddIcon />
     </Button>
-    {open ? <ListModal open={open} setOpen={setOpen} handleClose={handleClose}/> : null}
+    <ListModal open={open} setOpen={setOpen} handleClose={handleClose} onAddList={onAddList} /> 
     </>
   )
 }
 
-export default Saved
+export default Saved;
