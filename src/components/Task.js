@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -9,31 +9,29 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
 
-const Task = ({ task, onCheckTask }) => {
-  const [saved, setSaved] = useState(false)
+const Task = ({ task, lists, setLists, saved, onCheckTask, onSaveTask }) => {
 
     const labelId = `checkbox-list-label-${task.name}`;
 
-    const handleToggleCheck = () => {
-      task.status = !task.status
-      onCheckTask(task)
-    }
-
-    // you left off here!
+    // const handleToggleCheck = () => {
+    //   task.status = !task.status
+    //   onCheckTask(task)
+    // }
  
     const handleTaskSave = () => {
-      if (task.saved === false) {
+      if (saved === false) {
         fetch(`http://localhost:9292/tasks/${task.id}`, {
           method: 'PATCH',
           headers: {
             "Content-type": "application/json"
           },
           body: JSON.stringify({
-            saved: true
+            saved: true,
+            status: false
           }),
         })
         .then((r) => r.json())
-        .then(setSaved(true))
+        .then(onSaveTask(task))
       }
       else {
         fetch(`http://localhost:9292/tasks/${task.id}`, {
@@ -42,28 +40,36 @@ const Task = ({ task, onCheckTask }) => {
             "Content-type": "application/json"
           },
           body: JSON.stringify({
-            saved: false
+            saved: false,
+            status: false
           }),
         })
         .then((r) => r.json())
-        .then(setSaved(false))
+        .then(onSaveTask(task))
       }
       }
     
+    // const updatedTask = {
+    //   name: task.name,
+    //   description: task.description,
+    //   saved: task.saved,
+    //   list_id: task.list_id,
+    //   status: task.status,
+    //   }
 
-    const handleTaskDelete = () => {
-      fetch(`http://localhost:9292/tasks/${task.id}`, {
-        method: 'DELETE'
-      })
-      handleToggleCheck(task.id)
-    }
+    // const handleTaskDelete = () => {
+    //   fetch(`http://localhost:9292/tasks/${task.id}`, {
+    //     method: 'DELETE'
+    //   })
+    //   handleToggleCheck(task.id)
+    // }
 
     return (
       <Container key={task.id}>
         <ListItem
         secondaryAction={
           <IconButton edge="end" aria-label="bookmark" onClick={handleTaskSave} >
-            {task.saved ? <BookmarkIcon /> : <BookmarkBorderIcon /> }
+            {saved ? <BookmarkIcon /> : <BookmarkBorderIcon /> }
           </IconButton>
         }
         disablePadding
@@ -76,7 +82,7 @@ const Task = ({ task, onCheckTask }) => {
               tabIndex={-1}
               disableRipple
               inputProps={{ 'aria-labelledby': labelId }}
-              onChange={handleTaskDelete}
+              // onChange={handleTaskDelete}
             />
           </ListItemIcon>
           <ListItemText id={labelId} primary={`${task.name}`} />

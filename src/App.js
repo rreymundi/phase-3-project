@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 function App() {
   const [search, setSearch] = useState("")
   const [lists, setLists] = useState([])
+  const [savedTasks, setSavedTasks] = useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
@@ -25,6 +26,11 @@ function App() {
     })
     setLists([...lists])
   }
+
+  // const handleSaveTask = (savedTask) => {
+  //     savedTask.saved = !savedTask.saved
+  //     setLists([...lists])
+  //     }
 
   return (
       <Router>

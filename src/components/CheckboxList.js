@@ -6,11 +6,16 @@ import Button from '@mui/material/Button';
 import TaskModal from './TaskModal';
 import Task from './Task';
 
-const CheckboxList = ({ list, onAddTask, onCheckTask, onSaveTask }) => {
+const CheckboxList = ({ list, lists, tasks, setLists, onAddTask, onCheckTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleSaveTask = (savedTask) => {
+    savedTask.saved = !savedTask.saved
+    setLists([...lists])
+    }
+    
   return (
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
         <Container sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'baseline'}}>
@@ -20,7 +25,7 @@ const CheckboxList = ({ list, onAddTask, onCheckTask, onSaveTask }) => {
             <Button onClick={handleOpen}>Add</Button>
             <TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />
         </Container>
-        {list.tasks?.map((task) => <Task key={task.id} task={task} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)}
+        {list.tasks?.map((task) => <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={handleSaveTask} />)}
       </Card>
     );
 }

@@ -134,7 +134,7 @@ const NavBar = ({ search, setSearch }) => {
             >
             <Button color='inherit' component={ Link } to='/'>LIST.IT</Button>
           </Typography>
-          {/* <Search>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -143,7 +143,7 @@ const NavBar = ({ search, setSearch }) => {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e) => setSearch(e.target.value)}
             />
-          </Search> */}
+          </Search>
         </Toolbar>
       </AppBar>
     </Box>
