@@ -6,15 +6,16 @@ import Button from '@mui/material/Button';
 import TaskModal from './TaskModal';
 import Task from './Task';
 
-const CheckboxList = ({ list, lists, tasks, setLists, onAddTask, onCheckTask }) => {
+const CheckboxList = ({ list, lists, setLists, onAddTask, onCheckTask, onSaveTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSaveTask = (savedTask) => {
-    savedTask.saved = !savedTask.saved
-    setLists([...lists])
-    }
+  // const handleSaveTask = (savedTask) => {
+  //   savedTask.saved = !savedTask.saved
+  //   setLists([...lists])
+  //   }
+  // THIS IS THE START OF MY CHANGE
     
   return (
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
@@ -25,7 +26,7 @@ const CheckboxList = ({ list, lists, tasks, setLists, onAddTask, onCheckTask }) 
             <Button onClick={handleOpen}>Add</Button>
             <TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />
         </Container>
-        {list.tasks?.map((task) => <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={handleSaveTask} />)}
+        {list.tasks?.map((task) => <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)}
       </Card>
     );
 }

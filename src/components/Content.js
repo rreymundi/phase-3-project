@@ -7,7 +7,10 @@ import Home from './Home';
 import All from './All';
 import Saved from './Saved';
 
-const Content = ({ lists, setLists, onAddTask, onAddList }) => {
+const Content = ({ lists, setLists, onAddTask, onAddList, onSaveTask, savedTasks, setSavedTasks }) => {
+
+    const tasksArrays = lists.map((list) => list.tasks)
+    const tasks = tasksArrays.flat(1)
 
     return (
             <Box
@@ -24,8 +27,8 @@ const Content = ({ lists, setLists, onAddTask, onAddList }) => {
                         <Grid item xs={12}>
                             <Routes>
                                 <Route path='/' element={<Home />} />
-                                <Route path='/lists' element={<All lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} />} />
-                                <Route path='/saved' element={<Saved lists={lists} />} />
+                                <Route path='/lists' element={<All lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} />} />
+                                <Route path='/saved' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} />} />
                             </Routes>
                         </Grid>
                     </Grid>

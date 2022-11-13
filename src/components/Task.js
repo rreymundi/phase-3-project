@@ -9,7 +9,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
 
-const Task = ({ task, lists, setLists, saved, onCheckTask, onSaveTask }) => {
+const Task = ({ task, saved, onCheckTask, onSaveTask }) => {
 
     const labelId = `checkbox-list-label-${task.name}`;
 
@@ -31,7 +31,7 @@ const Task = ({ task, lists, setLists, saved, onCheckTask, onSaveTask }) => {
           }),
         })
         .then((r) => r.json())
-        .then(onSaveTask(task))
+        .then((onSaveTask(task)))
       }
       else {
         fetch(`http://localhost:9292/tasks/${task.id}`, {

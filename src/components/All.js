@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 
-const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask }) => {
+const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -17,7 +17,7 @@ const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask }) => {
     setLists([...lists])
     }
 
-  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} />)
+  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)
   
   return (
     <>
