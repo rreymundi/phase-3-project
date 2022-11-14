@@ -6,13 +6,13 @@ import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 import Task from './Task';
 
-const Saved = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks }) => {
+const Completed = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   
-  const mySavedTasks = tasks.map((task) => {
-    if (task.saved && task.status === false) {
+  const myCompletedTasks = tasks.map((task) => {
+    if (task.status) {
       return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />
     }
   })
@@ -20,10 +20,10 @@ const Saved = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTask
   return (
     <>
     <Container sx={{ marginBottom: '32px'}}>
-      <Typography variant='h3'>Important tasks</Typography>  
+      <Typography variant='h3'>Completed tasks</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
-      {mySavedTasks}
+      {myCompletedTasks}
     </Container>
     {/* <Button variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
       <AddIcon />
@@ -33,4 +33,4 @@ const Saved = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTask
   )
 }
 
-export default Saved;
+export default Completed;

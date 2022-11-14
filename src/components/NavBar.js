@@ -17,6 +17,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListIcon from '@mui/icons-material/List';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import LoginIcon from '@mui/icons-material/Login';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -94,7 +95,7 @@ const NavBar = ({ search, setSearch }) => {
               >
               <List>
                 <ListItem disablePadding>
-                  <ListItemButton component={ Link } to='/lists'>
+                  <ListItemButton component={ Link } to='/all'>
                     <ListItemIcon>
                       <ListIcon />
                     </ListItemIcon>
@@ -102,11 +103,19 @@ const NavBar = ({ search, setSearch }) => {
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
-                  <ListItemButton component={ Link } to='/saved'>
+                  <ListItemButton component={ Link } to='/important'>
                     <ListItemIcon>
                       <BookmarkBorderIcon />
                     </ListItemIcon>
-                    <ListItemText>Saved</ListItemText>
+                    <ListItemText>Important</ListItemText>
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton component={ Link } to='/completed'>
+                    <ListItemIcon>
+                      <CheckCircleOutlineIcon />
+                    </ListItemIcon>
+                    <ListItemText>Completed</ListItemText>
                   </ListItemButton>
                 </ListItem>
               </List>

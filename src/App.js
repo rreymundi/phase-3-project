@@ -28,16 +28,19 @@ function App() {
   }
 
   const handleSaveTask = (savedTask) => {
-    savedTask.saved = !savedTask.saved
+    // savedTask.saved = !savedTask.saved
     setLists([...lists])
     // return (savedTask.saved ? setSavedTasks([...savedTasks, savedTask]) : setLists([...lists]))
   }
-// THIS IS WHERE I'VE LEFT OFF
+
+  const handleCheckTask = (checkedTask) => {
+    setLists([...lists])
+  }
 
   return (
       <Router>
         <NavBar search={search} setSearch={setSearch} />
-        <Content lists={lists} setLists={setLists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} />
+        <Content lists={lists} setLists={setLists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onCheckTask={handleCheckTask} />
       </Router>
   );
 }

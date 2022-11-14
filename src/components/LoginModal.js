@@ -6,6 +6,11 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 
 const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  })
+
 
     const style = {
       position: 'absolute',
@@ -22,15 +27,15 @@ const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
     
     const [formData, setFormData] = useState({
       name: "",
-      password: ""
+      something: ""
     })
     
     const handleChange = (e) => {
-      setFormData({
-        ...formData,
+      setLoginData({
+        ...loginData,
         [e.target.name]: e.target.value,
       })
-      console.log(formData)
+      console.log(loginData)
     }
   
     // const handleSubmit = (e) => {
@@ -51,7 +56,7 @@ const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
     // }
 
     const handleSubmit = () => {
-        console.log('logged in!')
+        console.log(`${loginData.username}logged in!`)
     }
 
   return (
@@ -67,10 +72,10 @@ const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
                   <Typography >Log in</Typography>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="username" value={formData.name} onChange={handleChange}/>
+                  <TextField required={ true } id="username" name="username" variant="standard" placeholder="username" value={formData.username} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="password" value={formData.password} onChange={handleChange}/>
+                  <TextField required={ true } id="password" name="password" variant="standard" placeholder="password" value={formData.password} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
                     <Button color="primary" type="submit">Submit</Button>

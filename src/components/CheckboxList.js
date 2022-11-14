@@ -15,7 +15,6 @@ const CheckboxList = ({ list, lists, setLists, onAddTask, onCheckTask, onSaveTas
   //   savedTask.saved = !savedTask.saved
   //   setLists([...lists])
   //   }
-  // THIS IS THE START OF MY CHANGE
     
   return (
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
@@ -26,7 +25,7 @@ const CheckboxList = ({ list, lists, setLists, onAddTask, onCheckTask, onSaveTas
             <Button onClick={handleOpen}>Add</Button>
             <TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />
         </Container>
-        {list.tasks?.map((task) => <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)}
+        {list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null)}
       </Card>
     );
 }

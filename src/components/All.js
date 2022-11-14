@@ -9,24 +9,16 @@ const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask })
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
-  // const filteredTasks = tasks?.filter((task) => task.name.toLowerCase().includes(search.toLowerCase()))
 
-  const handleSaveTask = (savedTask) => {
-    savedTask.saved = !savedTask.saved
-    setLists([...lists])
-    }
-
-  const unfilteredLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)
+  const renderedLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)
   
   return (
     <>
     <Container sx={{ marginBottom: '32px'}}>
-      <Typography variant='h3'>My Lists</Typography>  
+      <Typography variant='h3'>All tasks</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
-      {/* {search === "" ? unfilteredLists : filteredTasks} */}
-      {unfilteredLists}
+      {renderedLists}
     </Container>
     <Button variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
       <AddIcon />
