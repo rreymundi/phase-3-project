@@ -9,7 +9,8 @@ const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
   const [loginData, setLoginData] = useState({
     username: "",
     password: "",
-  })
+  });
+  const [user, setUser] = useState([])
 
 
     const style = {
@@ -55,8 +56,11 @@ const LoginModal = ({ open, setOpen, handleClose, onAddList}) => {
     //   .then(onAddList)
     // }
 
-    const handleSubmit = () => {
-        console.log(`${loginData.username}logged in!`)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        fetch(`http://localhost:9292/login`)
+        .then((r) => r.json())
+        .then((data) => console.log(data));
     }
 
   return (

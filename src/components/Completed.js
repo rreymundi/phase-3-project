@@ -6,14 +6,15 @@ import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 import Task from './Task';
 
-const Completed = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks }) => {
+const Completed = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks, onDeleteTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   
   const myCompletedTasks = tasks.map((task) => {
     if (task.status) {
-      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />
+      return <Task key={task.id} task={task} lists={lists} setLists={setLists}  saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onDeleteTask={onDeleteTask} />
     }
   })
   

@@ -9,8 +9,9 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
 import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Task = ({ task, saved, onCheckTask, onSaveTask }) => {
+const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
     const [checked, setChecked] = useState(false)
 
     const labelId = `checkbox-list-label-${task.name}`;
@@ -32,7 +33,6 @@ const Task = ({ task, saved, onCheckTask, onSaveTask }) => {
     }
  
     const handleTaskSave = () => {
-      // if (saved === false) {
         task.saved = !task.saved
         fetch(`http://localhost:9292/tasks/${task.id}`, {
           method: 'PATCH',
@@ -47,21 +47,6 @@ const Task = ({ task, saved, onCheckTask, onSaveTask }) => {
         .then((r) => r.json())
         .then((onSaveTask(task)))
       }
-      // else {
-      //   fetch(`http://localhost:9292/tasks/${task.id}`, {
-      //     method: 'PATCH',
-      //     headers: {
-      //       "Content-type": "application/json"
-      //     },
-      //     body: JSON.stringify({
-      //       saved: false,
-      //       status: task.status
-      //     }),
-      //   })
-      //   .then((r) => r.json())
-      //   .then(onSaveTask(task))
-      // }
-      // }
     
     // const updatedTask = {
     //   name: task.name,
@@ -71,17 +56,21 @@ const Task = ({ task, saved, onCheckTask, onSaveTask }) => {
     //   status: task.status,
     //   }
 
-    // const handleTaskDelete = () => {
-    //   fetch(`http://localhost:9292/tasks/${task.id}`, {
-    //     method: 'DELETE'
-    //   })
-    //   handleToggleCheck(task.id)
-    // }
+    const handleTaskDelete = () => {
+      fetch(`http://localhost:9292/tasks/${task.id}`, {
+        method: 'DELETE'
+      })
+      onDeleteTask(task.id)
+    }
 
     return (
       <Container key={task.id}>
         <ListItem
-        secondaryAction={
+        secondaryAction={task.status ?           
+        <IconButton edge="end" aria-label="bookmark"  onClick={handleTaskDelete}>
+        <DeleteIcon />
+      </IconButton>
+      :
           <IconButton edge="end" aria-label="bookmark" onClick={handleTaskSave} >
             {saved ? <BookmarkIcon /> : <BookmarkBorderIcon /> }
           </IconButton>
