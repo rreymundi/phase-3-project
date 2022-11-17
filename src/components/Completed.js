@@ -4,6 +4,7 @@ import CheckboxList from './CheckboxList'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
+import { Card } from '@mui/material';
 import Task from './Task';
 
 const Completed = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks, onDeleteTask }) => {
@@ -24,7 +25,9 @@ const Completed = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveT
       <Typography variant='h3'>Completed tasks</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
-      {myCompletedTasks}
+      <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
+        {myCompletedTasks}
+        </Card>
     </Container>
     {/* <Button variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
       <AddIcon />
