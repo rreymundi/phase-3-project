@@ -89,7 +89,7 @@ const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
               checked={task.status}
             />
           </ListItemIcon>
-          <ListItemText id={labelId} primary={`${task.name}`} />
+          <ListItemText id={labelId} primary={`${task.name}`} secondary={`${task.description}`}/>
         </ListItemButton>
       </ListItem>
       </Container>
