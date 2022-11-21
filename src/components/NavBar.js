@@ -95,11 +95,11 @@ const NavBar = ({ search, setSearch }) => {
               >
               <List>
                 <ListItem disablePadding>
-                  <ListItemButton component={ Link } to='/all'>
+                  <ListItemButton component={ Link } to='/lists'>
                     <ListItemIcon>
                       <ListIcon />
                     </ListItemIcon>
-                    <ListItemText>All</ListItemText>
+                    <ListItemText>My lists</ListItemText>
                   </ListItemButton>
                 </ListItem>
                 <ListItem disablePadding>
@@ -110,6 +110,7 @@ const NavBar = ({ search, setSearch }) => {
                     <ListItemText>Important</ListItemText>
                   </ListItemButton>
                 </ListItem>
+              <Divider />
                 <ListItem disablePadding>
                   <ListItemButton component={ Link } to='/completed'>
                     <ListItemIcon>
@@ -119,8 +120,7 @@ const NavBar = ({ search, setSearch }) => {
                   </ListItemButton>
                 </ListItem>
               </List>
-              <Divider />
-              <List>
+              {/* <List>
                 <ListItem disablePadding>
                 </ListItem>
                 <ListItem disablePadding>
@@ -131,7 +131,7 @@ const NavBar = ({ search, setSearch }) => {
                     <ListItemText>Log in</ListItemText>
                   </ListItemButton>
                 </ListItem>
-              </List>
+              </List> */}
             </Box>
           </Drawer>
                 <LoginModal open={open} setOpen={setOpen} handleClose={handleClose} />
@@ -143,7 +143,7 @@ const NavBar = ({ search, setSearch }) => {
             >
             <Button color='inherit' component={ Link } to='/'>LIST.IT</Button>
           </Typography>
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -152,7 +152,7 @@ const NavBar = ({ search, setSearch }) => {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e) => setSearch(e.target.value)}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

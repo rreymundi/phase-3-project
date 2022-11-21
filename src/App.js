@@ -5,14 +5,19 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState("")
+  const [savedStatus, setSavedStatus] = useState(false)
+  const [checkedStatus, setCheckedStatus] = useState(false)
   const [lists, setLists] = useState([])
-  const [savedTasks, setSavedTasks] = useState([])
+
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
     .then((r) => r.json())
     .then((data) => setLists(data));
   }, []);
+
+  const tasksArrays = lists.map((list) => list.tasks)
+  const tasks = tasksArrays.flat(1)
 
   const handleListAdd = (newList) => {
     setLists([...lists, newList])
@@ -27,18 +32,18 @@ function App() {
     setLists([...lists])
   }
 
-  const handleSaveTask = (savedTask) => {
-    setLists([...lists])
+  const handleSaveTask = () => {
+    setSavedStatus((savedStatus) => !savedStatus)
   }
 
-  const handleCheckTask = (checkedTask) => {
-    setLists([...lists])
+  const handleCheckTask = () => {
+    setCheckedStatus((checkedStatus) => !checkedStatus)
   }
 
   return (
       <Router>
         <NavBar search={search} setSearch={setSearch} />
-        <Content lists={lists} setLists={setLists} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onCheckTask={handleCheckTask} />
+        <Content lists={lists} setLists={setLists} tasks={tasks} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} onCheckTask={handleCheckTask} />
       </Router>
   );
 }

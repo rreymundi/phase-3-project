@@ -28,10 +28,6 @@ const Saved = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTask
         {mySavedTasks}
         </Card>
     </Container>
-    {/* <Button variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
-      <AddIcon />
-    </Button>
-    <ListModal open={open} setOpen={setOpen} handleClose={handleClose} onAddList={onAddList} />  */}
     </>
   )
 }

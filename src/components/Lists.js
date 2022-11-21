@@ -4,8 +4,9 @@ import CheckboxList from './CheckboxList'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
+import { Link } from 'react-router-dom';
 
-const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask }) => {
+const Lists = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -15,7 +16,7 @@ const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask })
   return (
     <>
     <Container sx={{ marginBottom: '32px'}}>
-      <Typography variant='h3'>All tasks</Typography>  
+      <Typography variant='h3'>My lists</Typography>  
     </Container>
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
       {renderedLists}
@@ -28,4 +29,4 @@ const All = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask })
   )
 }
 
-export default All
+export default Lists
