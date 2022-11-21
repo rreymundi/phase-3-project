@@ -7,8 +7,8 @@ function App() {
   const [search, setSearch] = useState("")
   const [savedStatus, setSavedStatus] = useState(false)
   const [checkedStatus, setCheckedStatus] = useState(false)
+  const [deletedStatus, setDeletedStatus] = useState(false)
   const [lists, setLists] = useState([])
-
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
@@ -40,10 +40,14 @@ function App() {
     setCheckedStatus((checkedStatus) => !checkedStatus)
   }
 
+  const handleDeleteTask = (id) => {
+    setDeletedStatus((deletedStatus) => !deletedStatus)
+  }
+
   return (
       <Router>
         <NavBar search={search} setSearch={setSearch} />
-        <Content lists={lists} setLists={setLists} tasks={tasks} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} onCheckTask={handleCheckTask} />
+        <Content lists={lists} setLists={setLists} tasks={tasks} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} onCheckTask={handleCheckTask} onDeleteTask={handleDeleteTask} />
       </Router>
   );
 }

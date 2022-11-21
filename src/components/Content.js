@@ -8,7 +8,7 @@ import Lists from './Lists';
 import Saved from './Saved';
 import Completed from './Completed';
 
-const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onCheckTask, savedTasks, setSavedTasks }) => {
+const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onCheckTask, savedTasks, setSavedTasks, onDeleteTask }) => {
 
     return (
             <Box
@@ -27,7 +27,7 @@ const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onC
                                 <Route path='/' element={<Home />} />
                                 <Route path='/lists' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
                                 <Route path='/important' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
-                                <Route path='/completed' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
+                                <Route path='/completed' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />} />
                             </Routes>
                         </Grid>
                     </Grid>
