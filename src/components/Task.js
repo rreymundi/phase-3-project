@@ -51,14 +51,6 @@ const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
         .then((r) => r.json())
         .then((onSaveTask(task)))
       }
-    
-    // const updatedTask = {
-    //   name: task.name,
-    //   description: task.description,
-    //   saved: task.saved,
-    //   list_id: task.list_id,
-    //   status: task.status,
-    //   }
 
     const handleTaskDelete = () => {
       // onDeleteTask(task.id)
