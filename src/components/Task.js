@@ -10,13 +10,9 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
 import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DeleteMessage from './DeleteMessage';
 
-const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
+const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask, handleOpen }) => {
     const [checked, setChecked] = useState(false)
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     const labelId = `checkbox-list-label-${task.name}`;
 
@@ -53,12 +49,11 @@ const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
       }
 
     const handleTaskDelete = () => {
-      // onDeleteTask(task.id)
       fetch(`http://localhost:9292/tasks/${task.id}`, {
         method: 'DELETE'
       })
+      .then(onDeleteTask(task))
       .then(handleOpen)
-      .then(onDeleteTask(task.id))
     }
 
     return (
@@ -90,7 +85,6 @@ const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask }) => {
           <ListItemText id={labelId} primary={`${task.name}`} secondary={`${task.description}`}/>
         </ListItemButton>
         </ListItem>
-        <DeleteMessage open={open} setOpen={setOpen} handleClose={handleClose} />
       </Container>
     );
   }

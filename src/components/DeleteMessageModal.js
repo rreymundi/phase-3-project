@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-const DeleteMessage = ({ open, handleClose }) => {
+const DeleteMessageModal = ({ open, handleClose }) => {
 
   return (
     <div>
@@ -28,7 +28,7 @@ const DeleteMessage = ({ open, handleClose }) => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ textAlign: 'center', color: 'red' }}>
-            Task DELETED!
+            Task deleted!
           </Typography>
         </Box>
       </Modal>
@@ -36,4 +36,4 @@ const DeleteMessage = ({ open, handleClose }) => {
   );
 }
 
-export default DeleteMessage;
+export default DeleteMessageModal;

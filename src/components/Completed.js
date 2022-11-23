@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ListModal from './ListModal';
 import { Card } from '@mui/material';
 import Task from './Task';
+import DeleteMessageModal from './DeleteMessageModal';
 
 const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, onDeleteTask }) => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, 
 
   const myCompletedTasks = tasks.map((task) => {
     if (task.status) {
-      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onDeleteTask={onDeleteTask} />
+      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onDeleteTask={onDeleteTask} handleOpen={handleOpen} />
     }
   })
   
@@ -27,6 +28,7 @@ const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, 
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
         {myCompletedTasks}
         </Card>
+        <DeleteMessageModal open={open} setOpen={setOpen} handleClose={handleClose} />
     </Container>
     </>
   )

@@ -7,7 +7,6 @@ function App() {
   const [search, setSearch] = useState("")
   const [savedStatus, setSavedStatus] = useState(false)
   const [checkedStatus, setCheckedStatus] = useState(false)
-  const [deletedStatus, setDeletedStatus] = useState(false)
   const [lists, setLists] = useState([])
 
   useEffect(() => {
@@ -16,12 +15,13 @@ function App() {
     .then((data) => setLists(data));
   }, []);
 
-  const tasksArrays = lists.map((list) => list.tasks)
-  const tasks = tasksArrays.flat(1)
-
   const handleListAdd = (newList) => {
     setLists([...lists, newList])
   }
+
+  const tasksArrays = lists.map((list) => list.tasks)
+  const tasks = tasksArrays.flat(1)
+
 
   const handleTaskAdd = (newTask) => {
     lists.forEach((list) => {
@@ -40,8 +40,14 @@ function App() {
     setCheckedStatus((checkedStatus) => !checkedStatus)
   }
 
-  const handleDeleteTask = (id) => {
-    setDeletedStatus((deletedStatus) => !deletedStatus)
+  const handleDeleteTask = (deletedTask) => {
+    console.log(deletedTask) 
+    lists.forEach((list) => {
+      if (list.id === deletedTask.list_id) {
+        list.tasks?.pop(deletedTask)
+      }
+    })
+    setLists([...lists])
   }
 
   return (
