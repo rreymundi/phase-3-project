@@ -10,8 +10,11 @@ import DeleteMessageModal from './DeleteMessageModal';
 
 const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, onDeleteTask }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const handleOpen = () => {
+    setOpen(true)
+    setTimeout(handleClose, 1000);
+  };
 
   const myCompletedTasks = tasks.map((task) => {
     if (task.status) {
@@ -28,7 +31,7 @@ const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, 
       <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
         {myCompletedTasks}
         </Card>
-        <DeleteMessageModal open={open} setOpen={setOpen} handleClose={handleClose} />
+        <DeleteMessageModal open={open} />
     </Container>
     </>
   )

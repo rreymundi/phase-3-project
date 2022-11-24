@@ -18,10 +18,8 @@ import ListItemText from '@mui/material/ListItemText';
 import ListIcon from '@mui/icons-material/List';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import LoginIcon from '@mui/icons-material/Login';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import LoginModal from './LoginModal';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -134,7 +132,6 @@ const NavBar = ({ search, setSearch }) => {
               </List> */}
             </Box>
           </Drawer>
-                <LoginModal open={open} setOpen={setOpen} handleClose={handleClose} />
           <Typography
             variant="h6"
             noWrap

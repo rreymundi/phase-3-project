@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Content from "./components/Content";
-import { BrowserRouter as Router } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   const [search, setSearch] = useState("")
@@ -54,6 +55,7 @@ function App() {
       <Router>
         <NavBar search={search} setSearch={setSearch} />
         <Content lists={lists} setLists={setLists} tasks={tasks} search={search} onAddList={handleListAdd} onAddTask={handleTaskAdd} onSaveTask={handleSaveTask} onCheckTask={handleCheckTask} onDeleteTask={handleDeleteTask} />
+        <Footer />
       </Router>
   );
 }

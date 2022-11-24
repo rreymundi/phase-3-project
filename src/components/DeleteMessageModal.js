@@ -16,13 +16,13 @@ const style = {
   p: 4,
 };
 
-const DeleteMessageModal = ({ open, handleClose }) => {
+const DeleteMessageModal = ({ open }) => {
 
   return (
     <div>
      <Modal
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
