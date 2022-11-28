@@ -4,8 +4,10 @@ import Modal from '@mui/material/Modal';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from "react-router-dom";
 
-const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
+const ListModal = ({ open, handleClose, onAddList}) => {
+    let navigate = useNavigate();
 
     const style = {
       position: 'absolute',
@@ -31,7 +33,7 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
     }
   
     const handleSubmit = (e) => {
-      setOpen(false);
+      handleClose()
       e.preventDefault();
       const newList = {
         name: formData.name,
@@ -45,6 +47,10 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
       })
       .then((r) => r.json())
       .then(onAddList)
+      .then(setFormData({
+        name: "",
+      }))
+      .then(navigate("/lists"))
     }
 
   return (
@@ -63,7 +69,7 @@ const ListModal = ({ open, setOpen, handleClose, onAddList}) => {
                   <TextField required={ true } id="name" name="name" variant="standard" placeholder="List name" value={formData.name} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                    <Button color="primary" type="submit">Submit</Button>
+                    <Button color="primary" type="submit" >Submit</Button>
                 </Grid>
               </Grid>
             </Box>
