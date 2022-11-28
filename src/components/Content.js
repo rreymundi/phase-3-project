@@ -29,8 +29,7 @@ const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onC
                         <Grid item xs={12}>
                             <Routes>
                                 <Route path='/' element={<Home />} />
-                                <Route path='/lists' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} handleOpen={handleOpen} />} >
-                                    <Route path="/lists/new" element={<ListModal open={open} setOpen={setOpen} handleClose={handleClose} onAddList={onAddList} /> } />
+                                <Route path='/lists/*' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} />} >
                                 </Route>
                                 <Route path='/important' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
                                 <Route path='/completed' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />} />

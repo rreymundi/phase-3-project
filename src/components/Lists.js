@@ -3,9 +3,10 @@ import { Container, Typography } from '@mui/material'
 import CheckboxList from './CheckboxList'
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import { Link, Outlet } from 'react-router-dom';
+import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import ListModal from './ListModal';
 
-const Lists = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask, handleOpen }) => {
+const Lists = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask, open, setOpen, handleOpen, handleClose }) => {
 
   const renderedLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />)
   
@@ -17,9 +18,12 @@ const Lists = ({ lists, setLists, onAddTask, onAddList, onCheckTask, onSaveTask,
     <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
       {renderedLists}
     </Container>
-    <Button component={ Link } to="/lists/new" variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
+    <Button component={ Link } to="new" variant="contained" onClick={handleOpen} sx={{ borderRadius: '50%', height: '50px', minWidth: '0', position: 'absolute', bottom: 40, right: 60, textAlign: 'center'}}>
       <AddIcon />
     </Button>
+    <Routes>
+    <Route path="new" element={<ListModal open={open} setOpen={setOpen} handleClose={handleClose} onAddList={onAddList} /> } />
+    </Routes>
     <Outlet />
     </>
   )

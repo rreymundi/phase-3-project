@@ -4,8 +4,10 @@ import Modal from '@mui/material/Modal';
 import { TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { useNavigate } from "react-router-dom";
 
 const TaskModal = ({ list, open, setOpen, handleClose, onAddTask }) => {
+  let navigate = useNavigate();
 
   const style = {
       position: 'absolute',
@@ -51,6 +53,7 @@ const TaskModal = ({ list, open, setOpen, handleClose, onAddTask }) => {
       })
       .then((r) => r.json())
       .then(onAddTask)
+      .then(navigate("/lists"))
     }
 
   return (
