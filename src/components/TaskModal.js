@@ -81,7 +81,7 @@ const TaskModal = ({
                   <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" value={formData.description} onChange={handleChange} multiline maxRows={2} />
                 </Grid>
                 <Grid item>
-                  <Button color="primary" type="submit">Submit</Button>
+                  <Button color="primary" type="submit">Add</Button>
                 </Grid>
               </Grid>
             </Box>
