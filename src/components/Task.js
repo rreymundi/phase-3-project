@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -8,7 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import { Container } from '@mui/system';
-import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Task = ({ 
@@ -19,7 +18,6 @@ const Task = ({
   onDeleteTask, 
   handleOpen 
 }) => {
-    const [checked, setChecked] = useState(false)
 
     const labelId = `checkbox-list-label-${task.name}`;
 
