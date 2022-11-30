@@ -11,7 +11,14 @@ import { Container } from '@mui/system';
 import { FOCUSABLE_SELECTOR } from '@testing-library/user-event/dist/utils';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const Task = ({ task, saved, onCheckTask, onSaveTask, onDeleteTask, handleOpen }) => {
+const Task = ({ 
+  task, 
+  saved, 
+  onCheckTask, 
+  onSaveTask, 
+  onDeleteTask, 
+  handleOpen 
+}) => {
     const [checked, setChecked] = useState(false)
 
     const labelId = `checkbox-list-label-${task.name}`;

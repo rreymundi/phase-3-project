@@ -5,10 +5,10 @@ import Content from "./components/Content";
 import Footer from "./components/Footer";
 
 function App() {
-  const [search, setSearch] = useState("")
-  const [savedStatus, setSavedStatus] = useState(false)
-  const [checkedStatus, setCheckedStatus] = useState(false)
-  const [lists, setLists] = useState([])
+  const [lists, setLists] = useState([]);
+  const [search, setSearch] = useState("");
+  const [savedStatus, setSavedStatus] = useState(false);
+  const [checkedStatus, setCheckedStatus] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:9292/lists")
@@ -18,11 +18,13 @@ function App() {
 
   const handleListAdd = (newList) => {
     setLists([...lists, newList])
-  }
+  };
 
-  const tasksArrays = lists.map((list) => list.tasks)
-  const tasks = tasksArrays.flat(1)
-
+  const tasksArrays = lists.map((list) => list.tasks);
+  const tasks = tasksArrays.flat(1);
+  // console.log(tasksArrays)
+  // const tasks = []
+  // lists.forEach((list) => tasks.push(list.tasks))
 
   const handleTaskAdd = (newTask) => {
     lists.forEach((list) => {
@@ -42,7 +44,6 @@ function App() {
   }
 
   const handleDeleteTask = (deletedTask) => {
-    console.log(deletedTask) 
     lists.forEach((list) => {
       if (list.id === deletedTask.list_id) {
         list.tasks?.pop(deletedTask)

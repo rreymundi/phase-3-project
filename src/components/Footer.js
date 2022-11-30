@@ -3,7 +3,7 @@ import { Paper } from '@mui/material';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { Image } from '@mui/icons-material';
+// import { Image } from '@mui/icons-material';
 
 const Footer = () => {
     return (

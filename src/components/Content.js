@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -7,9 +7,20 @@ import Home from './Home';
 import Lists from './Lists';
 import Saved from './Saved';
 import Completed from './Completed';
-import ListModal from './ListModal';
 
-const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onCheckTask, savedTasks, setSavedTasks, onDeleteTask }) => {
+const Content = ({ 
+    lists, 
+    setLists, 
+    tasks, 
+    onAddTask, 
+    onAddList, 
+    onSaveTask, 
+    onCheckTask, 
+    savedTasks, 
+    setSavedTasks, 
+    onDeleteTask, 
+    onEditList 
+}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -29,7 +40,7 @@ const Content = ({ lists, setLists, tasks, onAddTask, onAddList, onSaveTask, onC
                         <Grid item xs={12}>
                             <Routes>
                                 <Route path='/' element={<Home />} />
-                                <Route path='/lists/*' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} />} >
+                                <Route path='/lists/*' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} onEditList={onEditList} />} >
                                 </Route>
                                 <Route path='/important' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
                                 <Route path='/completed' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />} />

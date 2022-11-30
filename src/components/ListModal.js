@@ -6,7 +6,11 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 
-const ListModal = ({ open, handleClose, onAddList}) => {
+const ListModal = ({ 
+  open, 
+  handleClose, 
+  onAddList
+}) => {
     let navigate = useNavigate();
 
     const style = {

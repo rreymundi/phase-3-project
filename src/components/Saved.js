@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { Container, Typography } from '@mui/material'
-import CheckboxList from './CheckboxList'
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import ListModal from './ListModal';
 import { Card } from '@mui/material';
 import Task from './Task';
 
-const Saved = ({ lists, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, tasks }) => {
+const Saved = ({ 
+  lists, 
+  onAddTask, 
+  onAddList, 
+  onCheckTask, 
+  onSaveTask, 
+  savedTasks, 
+  setSavedTasks, 
+  tasks 
+}) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

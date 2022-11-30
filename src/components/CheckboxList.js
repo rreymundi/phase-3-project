@@ -7,31 +7,44 @@ import TaskModal from './TaskModal';
 import Task from './Task';
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import EditIcon from '@mui/icons-material/Edit';
+import ListEditModal from './ListEditModal';
 
-const CheckboxList = ({ list, lists, setLists, onAddTask, onCheckTask, onSaveTask }) => {
+const CheckboxList = ({ 
+  list, 
+  lists, 
+  setLists, 
+  onAddTask, 
+  onCheckTask, 
+  onSaveTask, 
+  onEditList 
+}) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
     
   return (
-    <>
-      <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', alignContent: 'baseline'}}>
-          <Typography sx={{ mt: 1, mb: 1 }} variant="h6" component="div">
-              {list.name}
+      <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }} >
+          <Container sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'right'}} >
+            <Typography sx={{ mt: 1, mb: 1 }} variant="h6" component="div">
+                {list.name}
             </Typography>
-            <Button component={ Link } to={`${list.id}`} onClick={handleOpen}>
-              <AddCircleIcon />
-            </Button>
+            <Container>
+              <Button component={ Link } to={`${list.id}`} onClick={handleOpen} sx={{ minWidth: 0 }} >
+                <AddCircleIcon />
+              </Button>
+              <Button component={ Link } to={`${list.id}/edit`} onClick={handleOpen} sx={{ minWidth: 0 }} >
+                <EditIcon />
+              </Button>
+            </Container>
+          </Container>
+            { list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null) }
             <Routes>
               <Route path={`${list.id}`} element={<TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />} />
+              <Route path={`${list.id}/edit`} element={<ListEditModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onEditList={onEditList} />} />
             </Routes>
-        </Container>
-        {list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null)}
-      </Card>
-            <Outlet />
-    </>
-    );
+        </Card>
+  )
 }
 
 export default CheckboxList;

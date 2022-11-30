@@ -8,7 +8,18 @@ import { Card } from '@mui/material';
 import Task from './Task';
 import DeleteMessageModal from './DeleteMessageModal';
 
-const Completed = ({ lists, setLists, tasks, onAddTask, onAddList, onCheckTask, onSaveTask, savedTasks, setSavedTasks, onDeleteTask }) => {
+const Completed = ({ 
+  lists, 
+  setLists, 
+  tasks, 
+  onAddTask, 
+  onAddList, 
+  onCheckTask, 
+  onSaveTask, 
+  savedTasks, 
+  setSavedTasks, 
+  onDeleteTask 
+}) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => {

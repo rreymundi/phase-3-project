@@ -6,16 +6,16 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 
-const TaskModal = ({ 
+const ListEditModal = ({ 
   list, 
   open, 
-  setOpen, 
   handleClose, 
-  onAddTask 
+  onEditList
 }) => {
-  let navigate = useNavigate();
 
-  const style = {
+    let navigate = useNavigate();
+
+    const style = {
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -28,9 +28,7 @@ const TaskModal = ({
     };
     
     const [formData, setFormData] = useState({
-      name: "",
-      description: "",
-      list_id: list.id
+      name: list.name,
     })
     
     const handleChange = (e) => {
@@ -41,24 +39,23 @@ const TaskModal = ({
     }
   
     const handleSubmit = (e) => {
-      setOpen(false);
+      handleClose()
       e.preventDefault();
-      const newTask = {
+      const newListData = {
         name: formData.name,
-        description: formData.description,
-        list_id: formData.list_id,
-        saved: false,
-        status: false
         }
-      fetch("http://localhost:9292/tasks", {
-        method: "POST",
+      fetch(`http://localhost:9292//lists/${list.id}`, {
+        method: "PATCH",
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify(newTask)
+        body: JSON.stringify(newListData)
       })
       .then((r) => r.json())
-      .then(onAddTask)
+      .then(onEditList(list))
+      .then(setFormData({
+        name: list.name,
+      }))
       .then(navigate("/lists"))
     }
 
@@ -72,16 +69,13 @@ const TaskModal = ({
             <Box sx={style} component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
                 <Grid item>
-                  <Typography>Add a new task</Typography>
+                  <Typography>Edit list name</Typography>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="Task name" value={formData.name} onChange={handleChange}/>
+                  <TextField required={ true } id="name" name="name" variant="standard" placeholder="List name" value={formData.name} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" value={formData.description} onChange={handleChange} multiline maxRows={2} />
-                </Grid>
-                <Grid item>
-                  <Button color="primary" type="submit">Submit</Button>
+                    <Button color="primary" type="submit" >Submit</Button>
                 </Grid>
               </Grid>
             </Box>
@@ -89,4 +83,4 @@ const TaskModal = ({
   )
 }
 
-export default TaskModal
+export default ListEditModal
