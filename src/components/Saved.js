@@ -25,7 +25,7 @@ const Saved = ({
 
     <div>
       <Container sx={{ marginBottom: '32px'}}>
-        <Typography variant='h3'>Important tasks</Typography>  
+        <Typography variant='h3' sx={{ color: '#1976d2'}}>Important tasks</Typography>  
       </Container>
       <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
         <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>

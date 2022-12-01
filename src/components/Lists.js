@@ -33,7 +33,7 @@ const Lists = ({
   return (
     <div>
       <Container sx={{ marginBottom: '32px'}}>
-        <Typography variant='h3'>My lists</Typography>  
+        <Typography variant='h3' sx={{ color: '#1976d2'}}>My lists</Typography>  
       </Container>
       <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
         {renderedLists}

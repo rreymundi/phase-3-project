@@ -34,7 +34,7 @@ const Completed = ({
   return (
     <div>
       <Container sx={{ marginBottom: '32px'}}>
-        <Typography variant='h3'>Completed tasks</Typography>  
+        <Typography variant='h3' sx={{ color: '#1976d2'}}>Completed tasks</Typography>  
       </Container>
       <Container sx={{ display: 'flex', flexWrap: "wrap" }}>
         <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }}>

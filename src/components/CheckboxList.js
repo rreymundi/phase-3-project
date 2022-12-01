@@ -27,8 +27,8 @@ const CheckboxList = ({
 
   return (
     <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }} >
-        <Container sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'right'}} >
-          <Typography sx={{ mt: 1, mb: 1 }} variant="h6" component="div">
+        <Container sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'right' }} >
+          <Typography sx={{ mt: 1, mb: 1, color: '#1976d2' }} variant="h6" component="div">
               {list.name}
           </Typography>
           <Container>

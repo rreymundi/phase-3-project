@@ -75,7 +75,7 @@ const ListEditModal = ({
                   <TextField required={ true } id="name" name="name" variant="standard" placeholder="List name" value={formData.name} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                    <Button color="primary" type="submit" >Save</Button>
+                    <Button variant="contained" color="primary" type="submit" >Save</Button>
                 </Grid>
               </Grid>
             </Box>
