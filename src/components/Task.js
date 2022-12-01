@@ -34,7 +34,7 @@ const Task = ({
           }),
         })
         .then((r) => r.json())
-        .then(onCheckTask(task))
+        .then((checkedTask) => onCheckTask(checkedTask))
     }
  
     const handleTaskSave = () => {
@@ -50,7 +50,7 @@ const Task = ({
           }),
         })
         .then((r) => r.json())
-        .then((onSaveTask(task)))
+        .then((savedTask) => onSaveTask(savedTask))
       }
 
     const handleTaskDelete = () => {

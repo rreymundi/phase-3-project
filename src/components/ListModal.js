@@ -37,8 +37,9 @@ const ListModal = ({
     }
   
     const handleSubmit = (e) => {
-      handleClose()
       e.preventDefault();
+      handleClose()
+      navigate("/lists");
       const newList = {
         name: formData.name,
         }
@@ -50,11 +51,10 @@ const ListModal = ({
         body: JSON.stringify(newList)
       })
       .then((r) => r.json())
-      .then(onAddList)
+      .then((newList) => onAddList(newList))
       .then(setFormData({
         name: "",
       }))
-      .then(navigate("/lists"))
     }
 
   return (

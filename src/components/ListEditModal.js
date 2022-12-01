@@ -39,8 +39,9 @@ const ListEditModal = ({
     }
   
     const handleSubmit = (e) => {
-      handleClose()
       e.preventDefault();
+      handleClose()
+      navigate("/lists");
       const newListData = {
         name: formData.name,
         }
@@ -56,7 +57,6 @@ const ListEditModal = ({
       .then(setFormData({
         name: list.name,
       }))
-      .then(navigate("/lists"))
     }
 
   return (

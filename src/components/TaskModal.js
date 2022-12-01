@@ -41,8 +41,9 @@ const TaskModal = ({
     }
   
     const handleSubmit = (e) => {
-      setOpen(false);
       e.preventDefault();
+      setOpen(false);
+      navigate("/lists");
       const newTask = {
         name: formData.name,
         description: formData.description,
@@ -58,8 +59,7 @@ const TaskModal = ({
         body: JSON.stringify(newTask)
       })
       .then((r) => r.json())
-      .then(onAddTask)
-      .then(navigate("/lists"))
+      .then((newTask) => onAddTask(newTask))
     }
 
   return (
