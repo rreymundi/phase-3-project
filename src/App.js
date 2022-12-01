@@ -22,18 +22,18 @@ function App() {
 
   const tasksArrays = lists.map((list) => list.tasks);
   const tasks = tasksArrays.flat(1);
-  // console.log(tasksArrays)
-  // const tasks = []
-  // lists.forEach((list) => tasks.push(list.tasks))
 
   const handleTaskAdd = (newTask) => {
-    lists.forEach((list) => {
+    const updatedLists = lists.map((list) => {
       if (list.id === newTask.list_id) {
-        list.tasks?.push(newTask)
-      }
+        list.tasks.push(newTask)
+        return list
+      } else {
+        return list
+        }
     })
-    setLists([...lists])
-  }
+    setLists(updatedLists)
+  };
 
   const handleSaveTask = () => {
     setSavedStatus((savedStatus) => !savedStatus)
