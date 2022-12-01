@@ -23,7 +23,7 @@ const CheckboxList = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const renderedTasks = list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null) 
+  const renderedTasks = list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null)
 
   return (
     <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }} >

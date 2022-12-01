@@ -52,7 +52,7 @@ const ListEditModal = ({
         body: JSON.stringify(newListData)
       })
       .then((r) => r.json())
-      .then(onEditList(list))
+      .then((updatedList) => onEditList(updatedList))
       .then(setFormData({
         name: list.name,
       }))
