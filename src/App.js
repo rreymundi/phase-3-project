@@ -43,13 +43,17 @@ function App() {
     setCheckedStatus((checkedStatus) => !checkedStatus)
   }
 
-  const handleDeleteTask = (deletedTask) => {
-    lists.forEach((list) => {
+ const handleDeleteTask = (deletedTask) => {
+    const updatedLists = lists.map((list) => {
       if (list.id === deletedTask.list_id) {
-        list.tasks?.pop(deletedTask)
+        const updatedList = list.tasks.filter((task) => task.id !== deletedTask.id)
+        list.tasks = updatedList
+        return list
+      } else {
+        return list
       }
     })
-    setLists([...lists])
+    setLists(updatedLists)
   }
 
   return (
