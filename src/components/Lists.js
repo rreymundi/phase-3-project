@@ -28,7 +28,12 @@ const Lists = ({
     setLists(updatedLists)
   }
 
-  const renderedLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onEditList={handleListEdit} />)
+  const handleListDelete = (deletedList) => {
+    const updatedLists = lists.filter((list) => list.id !== deletedList.id)
+    setLists(updatedLists)
+  }
+
+  const renderedLists = lists?.map((list) => <CheckboxList key={list.id} lists={lists} list={list} tasks={list.tasks} setLists={setLists} onAddTask={onAddTask} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onEditList={handleListEdit} onDeleteList={handleListDelete} />)
   
   return (
     <div>

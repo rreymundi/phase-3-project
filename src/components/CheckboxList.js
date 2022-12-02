@@ -17,7 +17,8 @@ const CheckboxList = ({
   onAddTask, 
   onCheckTask, 
   onSaveTask, 
-  onEditList 
+  onEditList,
+  onDeleteList
 }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,7 +45,7 @@ const CheckboxList = ({
         <Outlet />
           <Routes>
             <Route path={`${list.id}`} element={<TaskModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onAddTask={onAddTask} />} />
-            <Route path={`${list.id}/edit`} element={<ListEditModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onEditList={onEditList} />} />
+            <Route path={`${list.id}/edit`} element={<ListEditModal list={list} open={open} setOpen={setOpen} handleClose={handleClose} onEditList={onEditList} onDeleteList={onDeleteList} />} />
           </Routes>
       </Card>
   )

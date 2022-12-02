@@ -10,7 +10,8 @@ const ListEditModal = ({
   list, 
   open, 
   handleClose, 
-  onEditList
+  onEditList,
+  onDeleteList
 }) => {
 
     let navigate = useNavigate();
@@ -59,6 +60,14 @@ const ListEditModal = ({
       }))
     }
 
+    const handleListDelete = (e) => {
+      e.preventDefault()
+      fetch(`http://localhost:9292/lists/${list.id}`, {
+        method: 'DELETE'
+      })
+      .then(onDeleteList(list))
+    }
+
   return (
     <Modal
         open={open}
@@ -77,6 +86,10 @@ const ListEditModal = ({
                 <Grid item>
                     <Button variant="contained" color="primary" type="submit" >Save</Button>
                 </Grid>
+                <Grid item>
+                <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: 'red'}} onClick={handleListDelete} >Delete list</Button>
+            </Grid>
+
               </Grid>
             </Box>
     </Modal>
