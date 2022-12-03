@@ -87,7 +87,7 @@ const ListEditModal = ({
                     <Button variant="contained" color="primary" type="submit" >Save</Button>
                 </Grid>
                 <Grid item>
-                <Button variant="contained" color="primary" type="submit" sx={{ backgroundColor: 'red'}} onClick={handleListDelete} >Delete list</Button>
+                <Button variant="contained" color="error" type="submit" onClick={handleListDelete} >Delete list</Button>
             </Grid>
 
               </Grid>
