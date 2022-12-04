@@ -25,6 +25,21 @@ const Content = ({
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const handleTaskEdit = (updatedTask) => {
+        const updatedLists = lists.map((list) => {
+            if (list.id === updatedTask.list_id) {
+              const updatedListOfTasks = list.tasks.map((task) => 
+                task.id === updatedTask.id ? updatedTask : task
+              )
+              list.tasks = updatedListOfTasks
+              return list
+            } else {
+              return list
+            }
+          })
+          setLists(updatedLists)
+    }
+
     return (
             <Box
                 component='main'
@@ -40,10 +55,10 @@ const Content = ({
                         <Grid item xs={12}>
                             <Routes>
                                 <Route path='/' element={<Home />} />
-                                <Route path='/lists/*' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} onEditList={onEditList} />} >
+                                <Route path='/lists/*' element={<Lists lists={lists} setLists={setLists} onAddTask={onAddTask} onAddList={onAddList} onSaveTask={onSaveTask} onCheckTask={onCheckTask} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} onEditList={onEditList} onEditTask={handleTaskEdit} />} >
                                 </Route>
-                                <Route path='/important' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} />} />
-                                <Route path='/completed' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} />} />
+                                <Route path='/important/*' element={<Saved lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onEditTask={handleTaskEdit} />} />
+                                <Route path='/completed/*' element={<Completed lists={lists} tasks={tasks} savedTasks={savedTasks} setSavedTasks={setSavedTasks} onSaveTask={onSaveTask} onCheckTask={onCheckTask} onDeleteTask={onDeleteTask} onEditTask={handleTaskEdit} />} />
                             </Routes>
                         </Grid>
                     </Grid>

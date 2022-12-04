@@ -4,18 +4,19 @@ import { Card } from '@mui/material';
 import Task from './Task';
 
 const Saved = ({ 
-  lists, 
-  onAddTask, 
-  onAddList, 
-  onCheckTask, 
+  lists,
+  tasks,
+  onAddTask,
+  onAddList,
+  onCheckTask,
   onSaveTask, 
-  savedTasks, 
-  setSavedTasks, 
-  tasks 
+  savedTasks,
+  setSavedTasks,
+  onEditTask 
 }) => {
   const mySavedTasks = tasks.map((task) => {
     if (task.saved && task.status === false) {
-      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} />
+      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onEditTask={onEditTask} />
     } else { 
       return null
     }

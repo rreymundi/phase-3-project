@@ -18,26 +18,24 @@ const CheckboxList = ({
   onCheckTask, 
   onSaveTask, 
   onEditList,
-  onDeleteList
+  onDeleteList,
+  onEditTask
 }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const renderedTasks = list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} /> : null)
+  const renderedTasks = list.tasks?.map((task) => task.status === false ? <Task key={task.id} list={list} setLists={setLists} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onEditTask={onEditTask} /> : null)
 
   return (
     <Card sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin: '10px' }} >
         <Container sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', textAlign: 'right' }} >
-          <Typography sx={{ mt: 1, mb: 1, color: '#1976d2' }} variant="h6" component="div">
+          <Button sx={{ mt: 1, mb: 1, color: '#1976d2' }} component={ Link } to={`${list.id}/edit`} onClick={handleOpen} >
               {list.name}
-          </Typography>
+          </Button>
           <Container>
             <Button component={ Link } to={`${list.id}`} onClick={handleOpen} sx={{ minWidth: 0 }} >
               <AddCircleIcon />
-            </Button>
-            <Button component={ Link } to={`${list.id}/edit`} onClick={handleOpen} sx={{ minWidth: 0 }} >
-              <EditIcon />
             </Button>
           </Container>
         </Container>

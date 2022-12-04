@@ -39,7 +39,7 @@ const Footer = () => {
               }}
             >
               <Typography variant="caption" color="white">
-                Copyright ©2022. [] Limited
+                Copyright ©2022. list.it Limited
               </Typography>
             </Box>
           </Container>

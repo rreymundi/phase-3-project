@@ -14,7 +14,8 @@ const Completed = ({
   onSaveTask, 
   savedTasks, 
   setSavedTasks, 
-  onDeleteTask 
+  onDeleteTask,
+  onEditTask
 }) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
@@ -25,7 +26,7 @@ const Completed = ({
 
   const myCompletedTasks = tasks.map((task) => {
     if (task.status) {
-      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onDeleteTask={onDeleteTask} handleOpen={handleOpen} />
+      return <Task key={task.id} task={task} saved={task.saved} onCheckTask={onCheckTask} onSaveTask={onSaveTask} onDeleteTask={onDeleteTask} handleOpen={handleOpen} onEditTask={onEditTask}  />
     } else {
       return null
     }

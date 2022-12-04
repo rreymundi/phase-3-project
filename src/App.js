@@ -46,8 +46,8 @@ function App() {
  const handleDeleteTask = (deletedTask) => {
     const updatedLists = lists.map((list) => {
       if (list.id === deletedTask.list_id) {
-        const updatedList = list.tasks.filter((task) => task.id !== deletedTask.id)
-        list.tasks = updatedList
+        const updatedListOfTasks = list.tasks.filter((task) => task.id !== deletedTask.id)
+        list.tasks = updatedListOfTasks
         return list
       } else {
         return list

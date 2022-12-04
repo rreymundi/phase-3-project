@@ -46,7 +46,7 @@ const ListEditModal = ({
       const newListData = {
         name: formData.name,
         }
-      fetch(`http://localhost:9292//lists/${list.id}`, {
+      fetch(`http://localhost:9292/lists/${list.id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json"
@@ -78,7 +78,7 @@ const ListEditModal = ({
             <Box sx={style} component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
                 <Grid item>
-                  <Typography>Edit list name</Typography>
+                  <Typography>Edit list</Typography>
                 </Grid>
                 <Grid item>
                   <TextField required={ true } id="name" name="name" variant="standard" placeholder="List name" value={formData.name} onChange={handleChange}/>
@@ -87,9 +87,8 @@ const ListEditModal = ({
                     <Button variant="contained" color="primary" type="submit" >Save</Button>
                 </Grid>
                 <Grid item>
-                <Button variant="contained" color="error" type="submit" onClick={handleListDelete} >Delete list</Button>
+                <Button variant="contained" color="error" size="small" type="submit" onClick={handleListDelete} >Delete list</Button>
             </Grid>
-
               </Grid>
             </Box>
     </Modal>

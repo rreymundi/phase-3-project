@@ -6,16 +6,16 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { useNavigate } from "react-router-dom";
 
-const TaskModal = ({ 
-  list, 
+const TaskEditModal = ({ 
+  task, 
   open, 
-  setOpen, 
   handleClose, 
-  onAddTask 
+  onEditTask,
 }) => {
-  let navigate = useNavigate();
 
-  const style = {
+    let navigate = useNavigate();
+
+    const style = {
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -28,38 +28,41 @@ const TaskModal = ({
     };
     
     const [formData, setFormData] = useState({
-      name: "",
-      description: "",
-      list_id: list.id
+      name: task.name,
+      description: task.description
     })
     
     const handleChange = (e) => {
       setFormData({
         ...formData,
         [e.target.name]: e.target.value,
+        [e.target.description]: e.target.value
       })
     }
   
     const handleSubmit = (e) => {
       e.preventDefault();
       handleClose()
-      navigate("/lists");
-      const newTask = {
+      // navigate("/lists");
+      const newTaskData = {
         name: formData.name,
         description: formData.description,
-        list_id: formData.list_id,
-        saved: false,
-        status: false
+        saved: task.saved,
+        status: task.status
         }
-      fetch("http://localhost:9292/tasks", {
-        method: "POST",
+      fetch(`http://localhost:9292/tasks/${task.id}`, {
+        method: "PATCH",
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify(newTask)
+        body: JSON.stringify(newTaskData)
       })
       .then((r) => r.json())
-      .then((newTask) => onAddTask(newTask))
+      .then((updatedTask) => onEditTask(updatedTask))
+      .then(setFormData({
+        name: task.name,
+        description: task.description
+      }))
     }
 
   return (
@@ -72,16 +75,16 @@ const TaskModal = ({
             <Box sx={style} component="form" onSubmit={handleSubmit}>
               <Grid container spacing={2} alignItems="center" justify="center" direction="column" >
                 <Grid item>
-                  <Typography>Add a new task</Typography>
+                  <Typography>Edit task</Typography>
                 </Grid>
                 <Grid item>
                   <TextField required={ true } id="name" name="name" variant="standard" placeholder="Task name" value={formData.name} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                  <TextField required={ true } id="description" name="description" variant="standard" placeholder="Description" value={formData.description} onChange={handleChange} multiline maxRows={2} />
+                  <TextField required={ true } id="description" name="description" variant="standard" placeholder="Task description" multiline maxRows={2} value={formData.description} onChange={handleChange}/>
                 </Grid>
                 <Grid item>
-                  <Button variant="contained"  color="primary" type="submit">Add</Button>
+                    <Button variant="contained" color="primary" type="submit" >Save</Button>
                 </Grid>
               </Grid>
             </Box>
@@ -89,4 +92,4 @@ const TaskModal = ({
   )
 }
 
-export default TaskModal
+export default TaskEditModal;
