@@ -10,11 +10,23 @@ Fork and clone this branch to set up your local copy of the front-end.
 
 List.it makes use of a custom API, for which a repo and instructions can be found [here](https://github.com/rreymundi/phase-3-project-backend/blob/main/README.md).
 
-Once the backend is up and running, you can run the following commands from this project's directory to start the app in your browser:
+Once the backend is up and running, you can run the following commands from this project's directory to run the app:
 
-### `npm install`
+### `npm install @mui/material @emotion/react @emotion/styled`
 
-Installs the front-end dependencies.
+This app makes us eof Material UI components.
+
+### `React`
+
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+
+### `React Router Dom`
+
+The app routes were set up using React Router Dom v6
+
+    "react-router-dom": "^6.4.2",
 
 ### `npm start`
 
