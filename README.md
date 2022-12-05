@@ -12,7 +12,7 @@ List.it makes use of a custom API, for which a repo and instructions can be foun
 
 Once the backend is up and running, you can run the following commands from this project's directory to start the app in your browser:
 
-### `bundle install`
+### `npm install`
 
 Installs the front-end dependencies.
 
