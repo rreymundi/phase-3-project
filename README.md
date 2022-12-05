@@ -45,6 +45,8 @@ List.it is comprised of three pages, each of which has a set of available featur
     - Delete tasks
     - Edit task names & descriptions
 
+All actions are set to persist via the back-end.
+
 ## Demo
 
 Check out a demo of List.it [here](https://youtu.be/xhb5Ozqw3Hk).
