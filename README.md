@@ -1,8 +1,8 @@
-# List.it
+# Phase 3 project: List.it
 
-Lit.it is a personal task management tool that allows you to organize tasks via lists.
+Lit.it is a personal task management tool that allows you to organize tasks via lists. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repo corresponds to the List.it frontend which was bootstrapped with [Create React App](https://create-react-app.dev/docs/getting-started).
 
 ## Getting started
 
